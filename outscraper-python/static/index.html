@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps Scraper - Outscraper</title>
+  <meta name="description" content="Extract business data from Google Maps. Get leads, phone numbers, emails, websites and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=2">
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-left">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="white"/>
+            </svg>
+          </div>
+          <span class="brand-name">Outscraper</span>
+        </div>
+        <div class="nav-links">
+          <a href="#" class="nav-link active">Services</a>
+          <a href="#" class="nav-link">Datasets</a>
+          <a href="#" class="nav-link">Tasks</a>
+          <a href="#" class="nav-link">API &amp; Integrations</a>
+          <a href="#" class="nav-link">Help</a>
+        </div>
+      </div>
+      <div class="navbar-right">
+        <span class="status-dot-wrap"><span class="status-dot"></span> All Systems Operational</span>
+        <div class="user-avatar">N</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section-label">SERVICES</div>
+      <a href="#" class="sidebar-item active">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Google Maps Scraper
+      </a>
+      <a href="#" class="sidebar-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Leads &amp; Contacts Enrichment
+      </a>
+      <a href="#" class="sidebar-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Address Verifier
+      </a>
+      <a href="#" class="sidebar-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Phone Numbers Enricher
+      </a>
+      <a href="#" class="sidebar-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Company Insights
+      </a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-title-row">
+          <div class="page-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4A6CF7"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <h1 class="page-title">Google Maps Scraper <span class="fav-star">★</span></h1>
+        </div>
+        <p class="page-subtitle">Returns places data from Google Maps</p>
+        <div class="page-links">
+          <a href="#">Pricing</a>
+          <span>|</span>
+          <a href="#">API Docs</a>
+          <span>|</span>
+          <a href="#">Product Page</a>
+          <span>|</span>
+          <a href="#" class="red-link">📕 Tutorials</a>
+          <span>|</span>
+          <a href="#">🎬 Video tutorial</a>
+        </div>
+      </div>
+
+      <!-- Scraper Form Card -->
+      <div class="form-card">
+
+        <!-- Categories -->
+        <div class="field-group">
+          <label class="field-label">
+            <span class="required">*</span> Categories/brands
+            <span class="help-icon" title="Enter a business category or brand name">?</span>
+          </label>
+          <div class="toggle-row">
+            <span class="toggle-label">Plain queries</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="plain-queries-toggle">
+              <span class="toggle-track"></span>
+            </label>
+            <span class="help-icon" title="Use plain text queries instead of categories">?</span>
+          </div>
+        </div>
+
+        <div class="tag-input-wrapper" id="categories-wrapper">
+          <div class="tag-input-box" id="categories-box">
+            <input type="text" id="category-input" placeholder="Select or enter categories" class="tag-input-field" autocomplete="off">
+          </div>
+          <button class="clear-btn" id="clear-categories" title="Clear categories">✕</button>
+        </div>
+        <div class="try-row">
+          Try:
+          <button class="try-chip" data-value="Doctor">Doctor</button>
+          <button class="try-chip" data-value="Restaurant">Restaurant</button>
+          <button class="try-chip" data-value="F&B">F&B</button>
+          <button class="try-chip" data-value="Top 250">Top 250</button>
+          <button class="try-chip" data-value="Top 500">Top 500</button>
+          <a href="#" class="try-link">Check out all categories</a>
+        </div>
+        <label class="checkbox-row">
+          <input type="checkbox" id="exact-match"> Exact match (ignore other categories Google might add)
+          <span class="help-icon" title="Only return exact category matches">?</span>
+        </label>
+
+        <div class="divider"></div>
+
+        <!-- Locations -->
+        <div class="field-group">
+          <label class="field-label">
+            <span class="required">*</span> Locations
+            <span class="help-icon" title="Specify target locations">?</span>
+          </label>
+        </div>
+
+        <div class="location-row">
+          <div class="country-select-wrapper">
+            <span class="flag">🇺🇸</span>
+            <select id="country-select" class="country-select">
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="India">India</option>
+              <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+              <option value="UAE">UAE</option>
+            </select>
+          </div>
+          <div class="location-tags-wrapper" id="location-tags-box">
+            <span class="location-tag" data-val="AK">AK <span class="tag-remove">×</span></span>
+            <span class="location-tag" data-val="AL">AL <span class="tag-remove">×</span></span>
+            <span class="location-tag" data-val="AR">AR <span class="tag-remove">×</span></span>
+            <span class="location-tag" data-val="AZ">AZ <span class="tag-remove">×</span></span>
+            <span class="location-more">+ 48 ...</span>
+            <input type="text" id="location-input" class="location-input-field" placeholder="Add location...">
+          </div>
+          <button class="clear-btn" id="clear-locations" title="Clear all locations">✕</button>
+        </div>
+
+        <div class="try-row">
+          Try:
+          <button class="try-chip location-chip" data-value="US">US</button>
+          <button class="try-chip location-chip" data-value="GB">GB</button>
+          <button class="try-chip location-chip" data-value="DE">DE</button>
+          <button class="try-chip location-chip" data-value="CA">CA</button>
+          <button class="try-chip location-chip" data-value="AU">AU</button>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="custom-locations"> Custom locations
+        </label>
+
+        <div class="divider"></div>
+
+        <!-- Maximum results -->
+        <div class="field-group">
+          <label class="field-label">
+            Maximum results limit (0 = unlimited)
+            <span class="help-icon" title="Set to 0 for unlimited results">?</span>
+          </label>
+        </div>
+        <input type="number" id="input-limit" class="limit-input" value="0" min="0" max="500">
+
+        <div class="divider"></div>
+
+        <!-- Engine Selector -->
+        <div class="field-group">
+          <label class="field-label">
+            Data Source
+            <span class="help-icon" title="Real = Live Google Maps scraping only">?</span>
+          </label>
+        </div>
+        <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+          <button class="engine-btn active" data-engine="real" id="engine-real">
+            🌍 Real Maps (Live)
+          </button>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Engine Selector (hidden for JS) -->
+        <input type="hidden" id="input-engine" value="real">
+
+        <!-- Enhance Results -->
+        <div class="field-group">
+          <label class="field-label">
+            Enhance results with other services (<strong>emails</strong>, social media, more phones, legal names, employees, etc.)
+            <span class="help-icon" title="Add enrichment services">?</span>
+          </label>
+        </div>
+
+        <div class="enrichment-tabs">
+          <button class="enrich-tab active" id="tab-packs">Lead Gen Packs</button>
+          <button class="enrich-tab" id="tab-services">All Services</button>
+          <span class="enrich-count">Enrichment Services: 19 total, 6 selected</span>
+        </div>
+
+        <p class="pack-heading">Choose from one of ready-made packages above</p>
+
+        <div class="packs-grid">
+          <div class="pack-card">
+            <div class="pack-card-header">
+              <span class="pack-title">Recommended Pack</span>
+              <button class="pack-settings">⚙</button>
+            </div>
+            <p class="pack-desc">Find emails, phones, and company profiles.</p>
+            <div class="pack-item"><span class="pack-icon green">G</span> Leads &amp; Contacts Enrichment <span class="expand-arrow">›</span></div>
+            <div class="pack-item"><span class="pack-icon green">G</span> Email Address Verifier <span class="expand-arrow">›</span></div>
+          </div>
+          <div class="pack-card">
+            <div class="pack-card-header">
+              <span class="pack-title">Cold Email Outreach Pack</span>
+              <button class="pack-settings">⚙</button>
+            </div>
+            <p class="pack-desc">Designed for effective cold email campaigns</p>
+            <div class="pack-item"><span class="pack-icon green">G</span> Leads &amp; Contacts Enrichment <span class="expand-arrow">›</span></div>
+            <div class="pack-item"><span class="pack-icon green">G</span> Email Address Verifier <span class="expand-arrow">›</span></div>
+            <div class="pack-item"><span class="pack-icon gray">C</span> Company Insights <span class="expand-arrow">›</span></div>
+          </div>
+          <div class="pack-card">
+            <div class="pack-card-header">
+              <span class="pack-title">Cold Calling Campaigns Pack</span>
+            </div>
+            <p class="pack-desc">Tailored for effective cold calling initiatives</p>
+            <div class="pack-item"><span class="pack-icon purple">P</span> Phone Numbers Enricher <span class="expand-arrow">›</span></div>
+            <div class="pack-item"><span class="pack-icon purple">P</span> Phone Identity Finder <span class="expand-arrow">›</span></div>
+            <div class="pack-item"><span class="pack-icon gray">C</span> Company Insights <span class="expand-arrow">›</span></div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Get Data Button -->
+        <div class="action-row">
+          <button id="btn-get-data" class="btn-get-data">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Get Data
+          </button>
+          <button id="btn-save" class="btn-save">💾 Save</button>
+        </div>
+
+      </div>
+
+      <!-- Progress + Logs Section (hidden until started) -->
+      <div id="progress-card" class="progress-card hidden">
+        <div class="progress-card-header">
+          <span class="progress-title">
+            <span class="spinner" id="spinner"></span>
+            Scraping in progress...
+          </span>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+        <div class="log-console" id="log-console">
+          <div class="log-entry gray">[SYSTEM] Ready.</div>
+        </div>
+      </div>
+
+      <!-- Results Section (hidden until complete) -->
+      <div id="results-section" class="results-section hidden">
+
+        <!-- KPI Row -->
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-label">Total Extracted</div>
+            <div class="kpi-value" id="kpi-total">0</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg. Rating</div>
+            <div class="kpi-value" id="kpi-rating">—</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Phone Coverage</div>
+            <div class="kpi-value" id="kpi-phone">0%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Websites Found</div>
+            <div class="kpi-value" id="kpi-web">0</div>
+          </div>
+        </div>
+
+        <!-- Download Bar -->
+        <div class="download-bar">
+          <div class="download-bar-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Extraction complete! Your data is ready.</span>
+          </div>
+          <button id="btn-download" class="btn-download">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Excel
+          </button>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-wrap">
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Business Name</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Reviews</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Email</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody id="results-tbody"></tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/static/app.js?v=4"></script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Databases and Scraping Outputs
+*.json
+*.xlsx
+*.txt
+!README.md
+!requirements.txt
+
+# Scratch directory
+scratch/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Operating System
+.DS_Store
+Thumbs.db
