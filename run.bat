@@ -1,8 +1,20 @@
 @echo off
-title MapLead Outscraper Setup & Runner
+title MapLead Outscraper Setup and Runner
 echo ===================================================
 echo   MapLead Outscraper Automated Startup
 echo ===================================================
+
+:: Check if the user is running the script from inside a ZIP file (without extracting)
+echo "%~dp0" | findstr /i "AppData\Local\Temp" >nul
+if %ERRORLEVEL% == 0 (
+    echo [ERROR] You are running this script inside the ZIP file!
+    echo.
+    echo Please EXTRACT the ZIP folder first to a normal folder 
+    echo (e.g., your Desktop), and then run run.bat from there.
+    echo.
+    pause
+    exit /b
+)
 
 cd /d "%~dp0outscraper-python"
 
@@ -27,8 +39,7 @@ if not exist "venv\Scripts\activate.bat" (
     echo ===================================================
     echo  [SETUP] Creating Python Virtual Environment (venv)...
     echo ===================================================
-    python -m venv venv
-    if %ERRORLEVEL% neq 0 (
+    python -m venv venv || (
         echo [ERROR] Failed to create virtual environment.
         pause
         exit /b
@@ -39,8 +50,7 @@ if not exist "venv\Scripts\activate.bat" (
     echo ===================================================
     call venv\Scripts\activate.bat
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    if %ERRORLEVEL% neq 0 (
+    pip install -r requirements.txt || (
         echo [ERROR] Failed to install dependencies.
         pause
         exit /b
@@ -49,8 +59,7 @@ if not exist "venv\Scripts\activate.bat" (
     echo ===================================================
     echo  [SETUP] Installing Playwright Web Browser...
     echo ===================================================
-    playwright install chromium
-    if %ERRORLEVEL% neq 0 (
+    playwright install chromium || (
         echo [ERROR] Failed to install Playwright browser.
         pause
         exit /b
