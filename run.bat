@@ -4,13 +4,13 @@ echo ===================================================
 echo   MapLead Outscraper Automated Startup
 echo ===================================================
 
-:: Check if the user is running the script from inside a ZIP file (without extracting)
+REM Check if the user is running the script from inside a ZIP file
 echo "%~dp0" | findstr /i "AppData\Local\Temp" >nul
 if %ERRORLEVEL% == 0 (
     echo [ERROR] You are running this script inside the ZIP file!
     echo.
-    echo Please EXTRACT the ZIP folder first to a normal folder 
-    echo (e.g., your Desktop), and then run run.bat from there.
+    echo Please EXTRACT the ZIP folder first to a normal folder,
+    echo such as your Desktop, and then run run.bat from there.
     echo.
     pause
     exit /b
@@ -27,7 +27,7 @@ if %ERRORLEVEL% neq 0 (
     echo Opening the official Python download page in your browser...
     echo.
     echo IMPORTANT: During installation, make sure to check the box:
-    echo            "[x] Add python.exe to PATH"
+    echo            [x] Add python.exe to PATH
     echo.
     start https://www.python.org/downloads/
     pause
@@ -35,9 +35,9 @@ if %ERRORLEVEL% neq 0 (
 )
 
 :: Check if the virtual environment folder exists
-if not exist "venv\Scripts\activate.bat" (
+if not exist venv\Scripts\activate.bat (
     echo ===================================================
-    echo  [SETUP] Creating Python Virtual Environment (venv)...
+    echo  [SETUP] Creating Python Virtual Environment venv...
     echo ===================================================
     python -m venv venv || (
         echo [ERROR] Failed to create virtual environment.
@@ -46,7 +46,7 @@ if not exist "venv\Scripts\activate.bat" (
     )
     
     echo ===================================================
-    echo  [SETUP] Installing dependencies (this may take a minute)...
+    echo  [SETUP] Installing dependencies - this may take a minute...
     echo ===================================================
     call venv\Scripts\activate.bat
     python -m pip install --upgrade pip
