@@ -125,7 +125,7 @@ async def download_excel(job_id: str):
             'email.emails_validator.status', 'email.emails_validator.status_details', 'contact_phone', 
             'contact_phones', 'contact_linkedin', 'contact_facebook', 'contact_instagram', 'contact_x', 
             'website_title', 'website_description', 'website_generator', 'website_has_gtm', 
-            'website_has_fb_pixel', 'source', 'latitude', 'longitude', 'h3', 'time_zone', 
+            'website_has_fb_pixel', 'source', 'h3', 'time_zone', 
             'plus_code', 'area_service', 'rating', 'reviews', 'reviews_link', 'reviews_tags', 
             'reviews_per_score', 'reviews_per_score_1', 'reviews_per_score_2', 'reviews_per_score_3', 
             'reviews_per_score_4', 'reviews_per_score_5', 'photos_count', 'photo', 'street_view', 

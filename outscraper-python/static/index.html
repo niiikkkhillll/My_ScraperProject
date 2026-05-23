@@ -192,19 +192,20 @@
         </div>
         <input type="number" id="input-limit" class="limit-input" value="0" min="0" max="500">
 
-        <div class="divider"></div>
-
-        <!-- Engine Selector -->
-        <div class="field-group">
-          <label class="field-label">
-            Data Source
-            <span class="help-icon" title="Real = Live Google Maps scraping only">?</span>
-          </label>
-        </div>
-        <div style="display: flex; gap: 10px; margin-bottom: 16px;">
-          <button class="engine-btn active" data-engine="real" id="engine-real">
-            🌍 Real Maps (Live)
-          </button>
+        <!-- Engine Selector (Hidden because Real Maps is the only source used) -->
+        <div style="display: none;">
+          <div class="divider"></div>
+          <div class="field-group">
+            <label class="field-label">
+              Data Source
+              <span class="help-icon" title="Real = Live Google Maps scraping only">?</span>
+            </label>
+          </div>
+          <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+            <button class="engine-btn active" data-engine="real" id="engine-real">
+              🌍 Real Maps (Live)
+            </button>
+          </div>
         </div>
 
         <div class="divider"></div>
@@ -212,54 +213,56 @@
         <!-- Engine Selector (hidden for JS) -->
         <input type="hidden" id="input-engine" value="real">
 
-        <!-- Enhance Results -->
-        <div class="field-group">
-          <label class="field-label">
-            Enhance results with other services (<strong>emails</strong>, social media, more phones, legal names, employees, etc.)
-            <span class="help-icon" title="Add enrichment services">?</span>
-          </label>
-        </div>
-
-        <div class="enrichment-tabs">
-          <button class="enrich-tab active" id="tab-packs">Lead Gen Packs</button>
-          <button class="enrich-tab" id="tab-services">All Services</button>
-          <span class="enrich-count">Enrichment Services: 19 total, 6 selected</span>
-        </div>
-
-        <p class="pack-heading">Choose from one of ready-made packages above</p>
-
-        <div class="packs-grid">
-          <div class="pack-card">
-            <div class="pack-card-header">
-              <span class="pack-title">Recommended Pack</span>
-              <button class="pack-settings">⚙</button>
-            </div>
-            <p class="pack-desc">Find emails, phones, and company profiles.</p>
-            <div class="pack-item"><span class="pack-icon green">G</span> Leads &amp; Contacts Enrichment <span class="expand-arrow">›</span></div>
-            <div class="pack-item"><span class="pack-icon green">G</span> Email Address Verifier <span class="expand-arrow">›</span></div>
+        <!-- Enhance Results (Hidden because it is purely visual) -->
+        <div style="display: none;">
+          <div class="field-group">
+            <label class="field-label">
+              Enhance results with other services (<strong>emails</strong>, social media, more phones, legal names, employees, etc.)
+              <span class="help-icon" title="Add enrichment services">?</span>
+            </label>
           </div>
-          <div class="pack-card">
-            <div class="pack-card-header">
-              <span class="pack-title">Cold Email Outreach Pack</span>
-              <button class="pack-settings">⚙</button>
-            </div>
-            <p class="pack-desc">Designed for effective cold email campaigns</p>
-            <div class="pack-item"><span class="pack-icon green">G</span> Leads &amp; Contacts Enrichment <span class="expand-arrow">›</span></div>
-            <div class="pack-item"><span class="pack-icon green">G</span> Email Address Verifier <span class="expand-arrow">›</span></div>
-            <div class="pack-item"><span class="pack-icon gray">C</span> Company Insights <span class="expand-arrow">›</span></div>
-          </div>
-          <div class="pack-card">
-            <div class="pack-card-header">
-              <span class="pack-title">Cold Calling Campaigns Pack</span>
-            </div>
-            <p class="pack-desc">Tailored for effective cold calling initiatives</p>
-            <div class="pack-item"><span class="pack-icon purple">P</span> Phone Numbers Enricher <span class="expand-arrow">›</span></div>
-            <div class="pack-item"><span class="pack-icon purple">P</span> Phone Identity Finder <span class="expand-arrow">›</span></div>
-            <div class="pack-item"><span class="pack-icon gray">C</span> Company Insights <span class="expand-arrow">›</span></div>
-          </div>
-        </div>
 
-        <div class="divider"></div>
+          <div class="enrichment-tabs">
+            <button class="enrich-tab active" id="tab-packs">Lead Gen Packs</button>
+            <button class="enrich-tab" id="tab-services">All Services</button>
+            <span class="enrich-count">Enrichment Services: 19 total, 6 selected</span>
+          </div>
+
+          <p class="pack-heading">Choose from one of ready-made packages above</p>
+
+          <div class="packs-grid">
+            <div class="pack-card">
+              <div class="pack-card-header">
+                <span class="pack-title">Recommended Pack</span>
+                <button class="pack-settings">⚙</button>
+              </div>
+              <p class="pack-desc">Find emails, phones, and company profiles.</p>
+              <div class="pack-item"><span class="pack-icon green">G</span> Leads &amp; Contacts Enrichment <span class="expand-arrow">›</span></div>
+              <div class="pack-item"><span class="pack-icon green">G</span> Email Address Verifier <span class="expand-arrow">›</span></div>
+            </div>
+            <div class="pack-card">
+              <div class="pack-card-header">
+                <span class="pack-title">Cold Email Outreach Pack</span>
+                <button class="pack-settings">⚙</button>
+              </div>
+              <p class="pack-desc">Designed for effective cold email campaigns</p>
+              <div class="pack-item"><span class="pack-icon green">G</span> Leads &amp; Contacts Enrichment <span class="expand-arrow">›</span></div>
+              <div class="pack-item"><span class="pack-icon green">G</span> Email Address Verifier <span class="expand-arrow">›</span></div>
+              <div class="pack-item"><span class="pack-icon gray">C</span> Company Insights <span class="expand-arrow">›</span></div>
+            </div>
+            <div class="pack-card">
+              <div class="pack-card-header">
+                <span class="pack-title">Cold Calling Campaigns Pack</span>
+              </div>
+              <p class="pack-desc">Tailored for effective cold calling initiatives</p>
+              <div class="pack-item"><span class="pack-icon purple">P</span> Phone Numbers Enricher <span class="expand-arrow">›</span></div>
+              <div class="pack-item"><span class="pack-icon purple">P</span> Phone Identity Finder <span class="expand-arrow">›</span></div>
+              <div class="pack-item"><span class="pack-icon gray">C</span> Company Insights <span class="expand-arrow">›</span></div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+        </div>
 
         <!-- Get Data Button -->
         <div class="action-row">
