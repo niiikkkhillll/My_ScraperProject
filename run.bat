@@ -4,7 +4,7 @@ echo ===================================================
 echo   MapLead Outscraper Automated Startup
 echo ===================================================
 
-REM Check if the user is running the script from inside a ZIP file
+:: Check if the user is running the script from inside a ZIP file
 echo "%~dp0" | findstr /i "AppData\Local\Temp" >nul
 if %ERRORLEVEL% == 0 (
     echo [ERROR] You are running this script inside the ZIP file!
@@ -14,6 +14,35 @@ if %ERRORLEVEL% == 0 (
     echo.
     pause
     exit /b
+)
+
+:: Navigate to the folder where run.bat is located
+cd /d "%~dp0"
+
+:: Check if the project folders are missing (user only has run.bat)
+if not exist "outscraper-python" (
+    echo ===================================================
+    echo  [DOWNLOAD] Project files are missing!
+    echo  Downloading the latest files from GitHub...
+    echo ===================================================
+    
+    powershell -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://github.com/niiikkkhillll/My_ScraperProject/archive/refs/heads/main.zip' -OutFile 'project.zip'"
+    
+    if not exist "project.zip" (
+        echo [ERROR] Failed to download the project files from GitHub.
+        echo Please check your internet connection and try again.
+        pause
+        exit /b
+    )
+    
+    echo ===================================================
+    echo  [DOWNLOAD] Extracting project files...
+    echo ===================================================
+    
+    powershell -ExecutionPolicy Bypass -Command "Expand-Archive -Path 'project.zip' -DestinationPath 'temp_extracted' -Force; Get-ChildItem -Path 'temp_extracted\My_ScraperProject-main' -Force | Move-Item -Destination '.' -Force; Remove-Item 'temp_extracted' -Recurse -Force; Remove-Item 'project.zip' -Force"
+    
+    echo [DOWNLOAD] Download and extraction complete!
+    echo.
 )
 
 cd /d "%~dp0outscraper-python"
