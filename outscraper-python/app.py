@@ -1,6 +1,10 @@
 import subprocess
 import sys
-subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=False)
+import threading
+threading.Thread(
+    target=lambda: subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=False),
+    daemon=True
+).start()
 
 import os
 import uuid
