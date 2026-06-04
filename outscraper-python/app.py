@@ -41,6 +41,7 @@ class ScrapeRequest(BaseModel):
     area: str
     limit: int = 10
     engine: str = "simulated"
+    enrichEmail: bool = True
 
 @app.get("/")
 def read_root():
@@ -75,7 +76,7 @@ async def start_scrape(request: ScrapeRequest, background_tasks: BackgroundTasks
     }
 
     # Dispatch to asyncio background tasks
-    background_tasks.add_task(run_scraper_job, job_id, request.category, request.area, limit, engine)
+    background_tasks.add_task(run_scraper_job, job_id, request.category, request.area, limit, engine, request.enrichEmail)
 
     return {"jobId": job_id, "message": "Scraping task dispatched successfully."}
 
@@ -243,7 +244,7 @@ async def download_excel(job_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Excel generation failed: {str(e)}")
 
-async def run_scraper_job(job_id: str, category: str, area: str, limit: int, engine: str):
+async def run_scraper_job(job_id: str, category: str, area: str, limit: int, engine: str, enrich_email: bool = True):
     async def progress_update(progress: int, log_line: str):
         if job_id in jobs:
             jobs[job_id]["progress"] = progress
@@ -252,7 +253,7 @@ async def run_scraper_job(job_id: str, category: str, area: str, limit: int, eng
 
     try:
         if engine == "real":
-            scraped_data = await scrape_real_playwright(category, area, limit, progress_update)
+            scraped_data = await scrape_real_playwright(category, area, limit, progress_update, enrich_email)
         else:
             scraped_data = await scrape_simulated(category, area, limit, progress_update)
 

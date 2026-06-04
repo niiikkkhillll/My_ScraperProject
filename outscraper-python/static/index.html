@@ -192,6 +192,12 @@
         </div>
         <input type="number" id="input-limit" class="limit-input" value="0" min="0" max="500">
 
+        <label class="checkbox-row" style="margin-top: 16px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #4b5563;">
+          <input type="checkbox" id="input-enrich-email" checked style="width: 16px; height: 16px; accent-color: #4A6CF7; cursor: pointer;">
+          <span>Extract emails (opens & scans company websites)</span>
+          <span class="help-icon" title="Visits each business website in a background tab to extract emails. Disabling this makes scraping up to 10x faster!" style="cursor: help; color: #9ca3af; border: 1px solid #d1d5db; border-radius: 50%; width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; margin-left: 2px;">?</span>
+        </label>
+
         <!-- Engine Selector (Hidden because Real Maps is the only source used) -->
         <div style="display: none;">
           <div class="divider"></div>

@@ -499,10 +499,11 @@
     addLog('Sending request to Python backend...', 'cyan');
     addLog('Category: ' + category + ' | Area: ' + area + ' | Limit: ' + limit + ' | Engine: REAL', 'gray');
 
+    var enrichEmail = document.getElementById('input-enrich-email').checked;
     fetch('/api/scrape', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ category: category, area: area, limit: limit, engine: engine })
+      body: JSON.stringify({ category: category, area: area, limit: limit, engine: engine, enrichEmail: enrichEmail })
     })
     .then(function (res) {
       if (!res.ok) return res.json().then(function (e) { throw new Error(e.detail || 'Request failed'); });

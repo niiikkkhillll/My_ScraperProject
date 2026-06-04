@@ -6,7 +6,7 @@ import sys
 import json
 from playwright.async_api import async_playwright
 
-async def scrape_real_playwright(category: str, area: str, limit: int = 5, on_progress=None):
+async def scrape_real_playwright(category: str, area: str, limit: int = 5, on_progress=None, enrich_email: bool = True):
     # If on Windows and using an event loop other than ProactorEventLoop (e.g. SelectorEventLoop),
     # run Playwright inside a separate thread with a dedicated ProactorEventLoop to avoid NotImplementedError.
     if sys.platform == 'win32':
@@ -19,16 +19,16 @@ async def scrape_real_playwright(category: str, area: str, limit: int = 5, on_pr
                 asyncio.set_event_loop(loop)
                 try:
                     return loop.run_until_complete(
-                        _scrape_real_playwright_impl(category, area, limit, on_progress)
+                        _scrape_real_playwright_impl(category, area, limit, on_progress, enrich_email)
                     )
                 finally:
                     loop.close()
             
             return await asyncio.to_thread(thread_wrapper)
 
-    return await _scrape_real_playwright_impl(category, area, limit, on_progress)
+    return await _scrape_real_playwright_impl(category, area, limit, on_progress, enrich_email)
 
-async def _scrape_real_playwright_impl(category: str, area: str, limit: int = 5, on_progress=None):
+async def _scrape_real_playwright_impl(category: str, area: str, limit: int = 5, on_progress=None, enrich_email: bool = True):
     query = f"{category} in {area}"
     items = []
     
@@ -101,8 +101,8 @@ async def _scrape_real_playwright_impl(category: str, area: str, limit: int = 5,
             # Scroll sidebar container
             scroll_count = 0
             place_links = []
-            required_discover = limit + 25
-            max_scrolls = max(35, required_discover // 2)
+            required_discover = limit + max(5, limit // 5)
+            max_scrolls = max(10, required_discover // 2)
         
             while scroll_count < max_scrolls:
                 # Extract links
@@ -440,7 +440,7 @@ const phoneEl = document.querySelector('button[data-item-id^="phone:"]') ||
                     real_email = None
                     real_phone = None
                     clean_name_slug = re.sub(r'[^a-z0-9]', '', clean_name.lower())
-                    if cleaned_website and cleaned_website != "No website listed":
+                    if enrich_email and cleaned_website and cleaned_website != "No website listed":
                         site_page = None
                         try:
                             async def do_enrichment():
