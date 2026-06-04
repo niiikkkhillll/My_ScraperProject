@@ -1,0 +1,12 @@
+.git
+.gitignore
+venv/
+outscraper-python/venv/
+__pycache__/
+**/__pycache__/
+*.xlsx
+*.json
+*.bat
+output.txt
+output.json
+scratch/
