@@ -51,13 +51,14 @@ async def _scrape_real_playwright_impl(category: str, area: str, limit: int = 5,
             context = await browser.new_context(
                 viewport={"width": 1280, "height": 800},
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, Gecko) Chrome/120.0.0.0 Safari/537.36",
-                ignore_https_errors=True
+                ignore_https_errors=True,
+                locale="en-US"
             )
         
             page = await context.new_page()
         
             query_escaped = urllib.parse.quote_plus(query)
-            search_url = f"https://www.google.com/maps/search/{query_escaped}"
+            search_url = f"https://www.google.com/maps/search/{query_escaped}?hl=en"
         
             if on_progress:
                 await on_progress(10, f"[INFO] Navigating directly to Maps search URL...")
@@ -457,7 +458,8 @@ const phoneEl = document.querySelector('button[data-item-id^="phone:"]') ||
                                         pass
                                 await site_page.route("**/*", intercept)
                             
-                                await site_page.goto(cleaned_website, wait_until="domcontentloaded", timeout=15000)
+                                # Reduced timeout from 15s to 7s for faster scraping on Render
+                                await site_page.goto(cleaned_website, wait_until="domcontentloaded", timeout=7000)
                             
                                 # Extract tel and mailto links directly from DOM (100% accurate)
                                 tel_hrefs = await site_page.evaluate("""() => {
@@ -580,7 +582,8 @@ const phoneEl = document.querySelector('button[data-item-id^="phone:"]') ||
                                                 continue
                                             seen_hrefs.add(href)
                                             try:
-                                                await site_page.goto(href, wait_until='domcontentloaded', timeout=8000)
+                                                # Reduced timeout from 8s to 4s for faster scraping on Render
+                                                await site_page.goto(href, wait_until='domcontentloaded', timeout=4000)
                                             except Exception:
                                                 pass
     
@@ -639,8 +642,8 @@ const phoneEl = document.querySelector('button[data-item-id^="phone:"]') ||
                                     elif valid_phones:
                                         real_phone = valid_phones[0]
                             
-                            # Enforce a strict 25-second timeout on the entire website parsing task
-                            await asyncio.wait_for(do_enrichment(), timeout=25.0)
+                            # Reduced strict timeout from 25.0s to 10.0s on the entire website parsing task for Render resource optimization
+                            await asyncio.wait_for(do_enrichment(), timeout=10.0)
                         except Exception as web_err:
                             if on_progress:
                                 await on_progress(progress_step, f"[WARNING] Website enrichment timed out or failed for {cleaned_website}: {str(web_err)}")
