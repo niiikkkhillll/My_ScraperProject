@@ -1,3 +1,7 @@
+import subprocess
+import sys
+subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=False)
+
 import os
 import uuid
 import asyncio
