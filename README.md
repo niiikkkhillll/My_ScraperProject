@@ -1,3 +1,12 @@
+---
+title: Lead Scraper
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 10000
+---
+
 # MapLead Outscraper Clone 🚀
 
 A premium Google Maps Lead Extraction application built with a **FastAPI** Python backend and a gorgeous, highly interactive **Vanilla HTML/CSS/JS** frontend. It supports both rapid data simulation and real live browser scraping via **Microsoft Playwright**.
